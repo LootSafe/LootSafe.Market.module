@@ -5,31 +5,10 @@ import "./Libraries/Random.sol";
 import "./Libraries/MarketLib.sol";
 import "./Libraries/SafeMath.sol";
 import "./Token/EIP20Interface.sol";
+import "./MarketEvents.sol";
 
 contract Market {
     using MarketLib for MarketLib.Offer;
-    
-    // ----------------------------------------------
-    // ----------------- Events ---------------------
-    // ----------------------------------------------
-
-    event Trade (
-        address offer,
-        address request, 
-        uint256 offerValue,
-        uint256 requestValue,
-        address merchant,
-        address cutomer
-    );
-
-    event TradeListed (
-        address offer,
-        address request, 
-        uint256 offerValue,
-        uint256 requestValue,
-        address merchant
-    );
-
 
     // ----------------------------------------------
     // ---------------- Globals ---------------------
@@ -37,6 +16,8 @@ contract Market {
 
     address public owner;
  
+    MarketEvents public marketEvents;
+
     // Merchant => Inventory
     mapping (address => address) public inventories;
 
@@ -51,15 +32,15 @@ contract Market {
 
     function Market() public {
         owner = msg.sender;
+        marketEvents = new MarketEvents();
     }
 
     // ----------------------------------------------
     // ----------- Internal Functions ---------------
     // ----------------------------------------------
 
-    event Test(bytes32 trade);
     // Check how many of an asset a merchant has locked in offers
-    function _getOutstandingValue (address asset, address merchant) constant private returns (uint256 value) {
+    function _getOutstandingValue (address asset, address merchant) private view returns (uint256 value) {
         bytes32[] memory merchantTrades = tradesByMerchant[merchant];
   
         uint outstandingValue;
@@ -78,7 +59,7 @@ contract Market {
     }
 
     // Get the total balance of an asset a merchant has in their inventory
-    function _getBalance(address asset, address merchant) constant private returns (uint256 _balance) {
+    function _getBalance(address asset, address merchant) private returns (uint256 _balance) {
         return EIP20Interface(asset).balanceOf(inventories[merchant]);
     }
 
@@ -101,6 +82,7 @@ contract Market {
         uint256 requestValue,
         address merchant,
         address customer,
+        uint settleTime,
         bool settled
     ) {
         MarketLib.Offer memory _offer = trades[tradeId];
@@ -111,6 +93,7 @@ contract Market {
             _offer.requestValue,
             _offer.merchant,
             _offer.customer,
+            _offer.settleTime,
             _offer.settled
         );
     }
@@ -132,6 +115,9 @@ contract Market {
 
         offer.settled = true;
         trades[tradeId].settled = true;
+
+        // TradeCacnelled event emitted
+        marketEvents.tradeCancelled(tradeId);
     }
 
     // Allow safe withdrawal of un-utilized assets
@@ -145,6 +131,9 @@ contract Market {
 
         // Safely withdrawal assets
         Inventory(inventories[msg.sender]).withdrawal(asset, value);
+
+        // Emit FundsWithdrawaled event
+        marketEvents.fundsWithdrawaled(msg.sender, asset, value);
     }
     
     // Create a new trade on the market
@@ -166,16 +155,9 @@ contract Market {
             requestValue: _requestValue,
             merchant: msg.sender,
             customer: 0x0,
+            settleTime: 0,
             settled: false
         });
-
-        TradeListed(
-            offer.offer,
-            offer.request,
-            offer.offerValue,
-            offer.requestValue,
-            offer.merchant
-        );
 
         // Require merchant to have enough of the item they 
         // wish to offer in their inventory
@@ -188,6 +170,15 @@ contract Market {
         tradeIds.push(tradeId);
         trades[tradeId] = offer;
         tradesByMerchant[msg.sender].push(tradeId);
+
+        // TradeListed event emitted
+        marketEvents.tradeListed(
+            offer.offer,
+            offer.request,
+            offer.offerValue,
+            offer.requestValue,
+            offer.merchant
+        );
     }
 
     // Fulfill a trade on the market
@@ -221,17 +212,11 @@ contract Market {
         // Update the trade to fulfilled status
         offer.customer = msg.sender;
         offer.settled = true;
+        offer.settleTime = now;
         trades[tradeId] = offer;
 
-        // Emit trade event
-        Trade(
-            offer.offer,
-            offer.request,
-            offer.offerValue,
-            offer.requestValue,
-            offer.merchant,
-            msg.sender
-        );
+        // Emit TradeFullfilled event
+        marketEvents.tradeFulfilled(tradeId, msg.sender, now);
     }
 
     // Fallback is used to create a new inventory for merchant
@@ -242,5 +227,8 @@ contract Market {
         inventories[msg.sender] = address(
             new Inventory(msg.sender)
         );
+
+        // Inventory created event
+        marketEvents.inventoryCreated(msg.sender, inventories[msg.sender]);
     }
 }

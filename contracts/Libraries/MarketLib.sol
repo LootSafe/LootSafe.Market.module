@@ -9,6 +9,7 @@ library MarketLib {
         uint256 requestValue;
         address merchant;
         address customer;
+        uint settleTime;
         bool settled;
     }
 }

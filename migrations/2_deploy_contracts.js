@@ -1,5 +1,6 @@
 const Inventory = artifacts.require('./Inventory.sol')
 const Market = artifacts.require('./Market.sol')
+const MarketEvents = artifacts.require('./MarketEvents.sol')
 
 const EIP20 = artifacts.require('./Token/EIP20.sol')
 
@@ -14,4 +15,5 @@ module.exports = function(deployer) {
   deployer.deploy(SafeMath)
   deployer.deploy(Inventory)
   deployer.deploy(Market)
+  deployer.deploy(MarketEvents)
 }

@@ -1,0 +1,25 @@
+{
+  "name": "lootsafe.market.module",
+  "version": "1.0.0",
+  "description": "",
+  "main": "truffle.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "node_modules/truffle/build/cli.bundled.js test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LootSafe/LootSafe.Market.module.git"
+  },
+  "author": "",
+  "license": "CLOSED",
+  "bugs": {
+    "url": "https://github.com/LootSafe/LootSafe.Market.module/issues"
+  },
+  "homepage": "https://github.com/LootSafe/LootSafe.Market.module#readme",
+  "dependencies": {
+    "truffle": "^4.0.5"
+  }
+}

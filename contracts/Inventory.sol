@@ -7,11 +7,6 @@ import "./Market.sol";
 contract Inventory {
     Market public market; // Origin marketplace
     address public merchant; // Owner of this inventory
-    
-    modifier onlyMarket {
-        require(msg.sender == address(market));
-        _;
-    }
 
     modifier onlyMerchant {
         require(msg.sender == merchant);

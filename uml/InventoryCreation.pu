@@ -1,0 +1,12 @@
+@startuml
+hide footbox
+title Create Inventory
+
+actor MerchantCustomer
+collections MarketContract
+
+MerchantCustomer -> MarketContract : Send 0 ETH to create Inventory
+MerchantCustomer -> MarketContract : Call getMyInventory() on ABI to retreive inventory address
+MarketContract -> MerchantCustomer : Returns address to Merchant or Customers Inventory
+
+@enduml
