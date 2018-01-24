@@ -1,0 +1,13 @@
+@startuml
+hide footbox
+title Cancel Offer
+skinparam monochrome true
+
+actor Merchant
+collections MarketContract
+collections Inventory
+
+Merchant -> Market : Merchant calls settle()
+MarketContract -> Inventory : Market unlocks offered funds in inventory
+
+@enduml

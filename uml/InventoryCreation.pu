@@ -1,6 +1,7 @@
 @startuml
 hide footbox
 title Create Inventory
+skinparam monochrome true
 
 actor MerchantCustomer
 collections MarketContract

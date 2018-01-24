@@ -1,0 +1,18 @@
+@startuml
+hide footbox
+title Fulfill Trade Offer
+skinparam monochrome true
+
+actor Customer
+actor Merchant
+collections MarketContract
+collections Inventory
+
+Customer -> Inventory : Customer sends assets they wish to offer
+Customer -> MarketContract : Customer calls fulfill()
+MarketContract -> Inventory : Market takes funds from Merchant
+MarketContract -> Inventory : Market takes funds from Customer
+Inventory -> Customer : Inventory sends merchant items to customer
+Inventory -> Merchant : Inventory sends customer items to merchant
+
+@enduml

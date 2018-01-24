@@ -1,0 +1,15 @@
+@startuml
+hide footbox
+title Make Trade Offer
+skinparam monochrome true
+
+actor Merchant
+collections MarketContract
+collections Inventory
+
+Merchant -> Inventory : Merchant sends assets they wish to offer
+Merchant -> MarketContract : Merchant calls offer()
+MarketContract -> Inventory : Market locks offered funds in inventory
+MarketContract -> Merchant : OfferCreated event emitted
+
+@enduml

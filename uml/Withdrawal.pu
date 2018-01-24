@@ -1,0 +1,15 @@
+@startuml
+hide footbox
+title Withdrawal Assets
+skinparam monochrome true
+
+actor MerchantCustomer
+collections MarketContract
+collections Inventory
+
+MerchantCustomer -> MarketContract : MerchantCustomer calls withdrawal()
+MarketContract -> MarketContract : Check to make sure funds are not in offers
+MarketContract -> Inventory : Withdrawal funds to MerchantCustomer
+Inventory -> MerchantCustomer : Withdrawal funds to MerchantCustomer
+
+@enduml

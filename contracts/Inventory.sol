@@ -13,6 +13,11 @@ contract Inventory {
         _;
     }
 
+    modifier onlyMarket {
+        require(msg.sender == address(market));
+        _;
+    }
+
     modifier multiAuth {
         require(msg.sender == address(market) || msg.sender == merchant);
         _;
@@ -26,7 +31,7 @@ contract Inventory {
     
     // Allow the merchant to withdrawal assets from inventory
     // Also allows market to fulfill trades
-    function withdrawal (address _asset, uint256 value) public multiAuth {
+    function withdrawal (address _asset, uint256 value) public onlyMarket {
         EIP20Interface asset = EIP20Interface(_asset);
         asset.transfer(merchant, value);
     }
