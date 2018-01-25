@@ -186,8 +186,10 @@ contract Market {
         MarketLib.Offer memory offer = trades[tradeId];
         
         // Ensure customer can fulfill trade
-        uint256 customerBalance = _getBalance(msg.sender, offer.request);
-        require(customerBalance >= offer.requestValue);
+        uint256 balance = _getBalance(msg.sender, offer.request);
+        uint256 outstandingValue = _getOutstandingValue(offer.request, msg.sender);
+
+        require(SafeMath.sub(balance, outstandingValue) >= offer.requestValue);
 
         // Ensure this trade is still active
         require(!offer.settled);

@@ -36,7 +36,7 @@ contract Inventory {
         asset.transfer(merchant, value);
     }
     
-    function transfer (address _to, address _asset, uint256 _value) public multiAuth {
+    function transfer (address _to, address _asset, uint256 _value) public onlyMarket {
         EIP20Interface asset = EIP20Interface(_asset);
         asset.transfer(_to, _value);
     }
