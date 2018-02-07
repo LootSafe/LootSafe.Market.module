@@ -5,10 +5,10 @@ module.exports = {
     routes: [ // Read only routes for module
         {
             endpoint: 'trades',
-            controller: () => {
-                return new Promise((resolve, reject) => {
-                    resolve('Test')
-                })
+            controller: (ctx) => {
+                ctx.body = {
+                    "test": 123
+                }
             }
         }
     ]
