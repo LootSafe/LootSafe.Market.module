@@ -1,0 +1,2329 @@
+{
+  "contractName": "MarketEvents",
+  "abi": [
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "tradeId",
+          "type": "bytes32"
+        }
+      ],
+      "name": "tradeCancelled",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "offer",
+          "type": "address"
+        },
+        {
+          "name": "request",
+          "type": "address"
+        },
+        {
+          "name": "offerValue",
+          "type": "uint256"
+        },
+        {
+          "name": "requestValue",
+          "type": "uint256"
+        },
+        {
+          "name": "merchant",
+          "type": "address"
+        }
+      ],
+      "name": "tradeListed",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "market",
+      "outputs": [
+        {
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "tradeId",
+          "type": "bytes32"
+        },
+        {
+          "name": "customer",
+          "type": "address"
+        },
+        {
+          "name": "at",
+          "type": "uint256"
+        }
+      ],
+      "name": "tradeFulfilled",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "merchant",
+          "type": "address"
+        },
+        {
+          "name": "inventory",
+          "type": "address"
+        }
+      ],
+      "name": "inventoryCreated",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "merchant",
+          "type": "address"
+        },
+        {
+          "name": "asset",
+          "type": "address"
+        },
+        {
+          "name": "value",
+          "type": "uint256"
+        }
+      ],
+      "name": "fundsWithdrawaled",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "name": "merchant",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "name": "inventory",
+          "type": "address"
+        }
+      ],
+      "name": "InventoryCreated",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "name": "merchant",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "name": "asset",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "name": "value",
+          "type": "uint256"
+        }
+      ],
+      "name": "FundsWithdrawaled",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "name": "offer",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "name": "request",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "name": "offerValue",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "name": "requestValue",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "name": "merchant",
+          "type": "address"
+        }
+      ],
+      "name": "TradeListed",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "name": "tradeId",
+          "type": "bytes32"
+        }
+      ],
+      "name": "TradeCancelled",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "name": "tradeId",
+          "type": "bytes32"
+        },
+        {
+          "indexed": false,
+          "name": "customer",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "name": "at",
+          "type": "uint256"
+        }
+      ],
+      "name": "TradeFulfilled",
+      "type": "event"
+    }
+  ],
+  "bytecode": "0x6060604052341561000f57600080fd5b336000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff1602179055506107858061005e6000396000f300606060405260043610610078576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff16806340f77e1d1461007d57806342885d11146100a457806380f556051461012d578063926b71df1461018257806397020b36146101d1578063e568f81514610229575b600080fd5b341561008857600080fd5b6100a260048080356000191690602001909190505061028a565b005b34156100af57600080fd5b61012b600480803573ffffffffffffffffffffffffffffffffffffffff1690602001909190803573ffffffffffffffffffffffffffffffffffffffff1690602001909190803590602001909190803590602001909190803573ffffffffffffffffffffffffffffffffffffffff16906020019091905050610327565b005b341561013857600080fd5b610140610464565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b341561018d57600080fd5b6101cf60048080356000191690602001909190803573ffffffffffffffffffffffffffffffffffffffff16906020019091908035906020019091905050610489565b005b34156101dc57600080fd5b610227600480803573ffffffffffffffffffffffffffffffffffffffff1690602001909190803573ffffffffffffffffffffffffffffffffffffffff16906020019091905050610564565b005b341561023457600080fd5b610288600480803573ffffffffffffffffffffffffffffffffffffffff1690602001909190803573ffffffffffffffffffffffffffffffffffffffff1690602001909190803590602001909190505061065a565b005b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff161415156102e557600080fd5b7f4e09303ea9c3932854b42432aa9f65348205f9681747864bf122101b353715038160405180826000191660001916815260200191505060405180910390a150565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff1614151561038257600080fd5b7fe35c2d3051c43ffde11a50635c7cc12be825306bd6d1371a0cc4a68715dcef918585858585604051808673ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020018573ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020018481526020018381526020018273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019550505050505060405180910390a15050505050565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff161415156104e457600080fd5b7f6a4e8cf0cd369785e678ce2e25346cb47fe3b673bce35689a10e5080871d3f758383836040518084600019166000191681526020018373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001828152602001935050505060405180910390a1505050565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff161415156105bf57600080fd5b7f4f76d3f7bc060537166a98604f737ee9931686a2209bea6ef5b3f39576fafeb18282604051808373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020018273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019250505060405180910390a15050565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff161415156106b557600080fd5b7fa34cc4a76e6a08cde6b3bbc43dd4d7df448e4e54a4fb6a9386d411334b11dc59838383604051808473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020018373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001828152602001935050505060405180910390a15050505600a165627a7a72305820c8a5afd6f174028de048e0a9623638e01e3dc54768b391eef3ef04bf26b737910029",
+  "deployedBytecode": "0x606060405260043610610078576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff16806340f77e1d1461007d57806342885d11146100a457806380f556051461012d578063926b71df1461018257806397020b36146101d1578063e568f81514610229575b600080fd5b341561008857600080fd5b6100a260048080356000191690602001909190505061028a565b005b34156100af57600080fd5b61012b600480803573ffffffffffffffffffffffffffffffffffffffff1690602001909190803573ffffffffffffffffffffffffffffffffffffffff1690602001909190803590602001909190803590602001909190803573ffffffffffffffffffffffffffffffffffffffff16906020019091905050610327565b005b341561013857600080fd5b610140610464565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b341561018d57600080fd5b6101cf60048080356000191690602001909190803573ffffffffffffffffffffffffffffffffffffffff16906020019091908035906020019091905050610489565b005b34156101dc57600080fd5b610227600480803573ffffffffffffffffffffffffffffffffffffffff1690602001909190803573ffffffffffffffffffffffffffffffffffffffff16906020019091905050610564565b005b341561023457600080fd5b610288600480803573ffffffffffffffffffffffffffffffffffffffff1690602001909190803573ffffffffffffffffffffffffffffffffffffffff1690602001909190803590602001909190505061065a565b005b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff161415156102e557600080fd5b7f4e09303ea9c3932854b42432aa9f65348205f9681747864bf122101b353715038160405180826000191660001916815260200191505060405180910390a150565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff1614151561038257600080fd5b7fe35c2d3051c43ffde11a50635c7cc12be825306bd6d1371a0cc4a68715dcef918585858585604051808673ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020018573ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020018481526020018381526020018273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019550505050505060405180910390a15050505050565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff161415156104e457600080fd5b7f6a4e8cf0cd369785e678ce2e25346cb47fe3b673bce35689a10e5080871d3f758383836040518084600019166000191681526020018373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001828152602001935050505060405180910390a1505050565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff161415156105bf57600080fd5b7f4f76d3f7bc060537166a98604f737ee9931686a2209bea6ef5b3f39576fafeb18282604051808373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020018273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019250505060405180910390a15050565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff161415156106b557600080fd5b7fa34cc4a76e6a08cde6b3bbc43dd4d7df448e4e54a4fb6a9386d411334b11dc59838383604051808473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020018373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001828152602001935050505060405180910390a15050505600a165627a7a72305820c8a5afd6f174028de048e0a9623638e01e3dc54768b391eef3ef04bf26b737910029",
+  "sourceMap": "50:1554:5:-;;;623:76;;;;;;;;681:10;665:6;;:27;;;;;;;;;;;;;;;;;;50:1554;;;;;;",
+  "deployedSourceMap": "50:1554:5:-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1051:99;;;;;;;;;;;;;;;;;;;;;;;;;;;;;705:340;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;78:20;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1156:140;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1306:135;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1451:151;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1051:99;165:6;;;;;;;;;;;143:29;;:10;:29;;;135:38;;;;;;;;1120:23;1135:7;1120:23;;;;;;;;;;;;;;;;;;;;;;;;1051:99;:::o;705:340::-;165:6;;;;;;;;;;;143:29;;:10;:29;;;135:38;;;;;;;;905:133;930:5;949:7;970:10;994:12;1020:8;905:133;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;705:340;;;;;:::o;78:20::-;;;;;;;;;;;;;:::o;1156:140::-;165:6;;;;;;;;;;;143:29;;:10;:29;;;135:38;;;;;;;;1252:37;1267:7;1276:8;1286:2;1252:37;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1156:140;;;:::o;1306:135::-;165:6;;;;;;;;;;;143:29;;:10;:29;;;135:38;;;;;;;;1397:37;1414:8;1424:9;1397:37;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1306:135;;:::o;1451:151::-;165:6;;;;;;;;;;;143:29;;:10;:29;;;135:38;;;;;;;;1554:41;1572:8;1582:5;1589;1554:41;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1451:151;;;:::o",
+  "source": "pragma solidity ^0.4.12;\n\nimport \"./Market.sol\";\n\ncontract MarketEvents {\n    Market public market;\n\n    modifier onlyMarket {\n        require(msg.sender == address(market));\n        _;\n    }\n\n    event InventoryCreated (address merchant, address inventory);\n\n    event FundsWithdrawaled (address merchant, address asset, uint256 value);\n\n    event TradeListed (\n        address offer,\n        address request, \n        uint256 offerValue,\n        uint256 requestValue,\n        address merchant\n    );\n\n    event TradeCancelled (bytes32 tradeId);\n    event TradeFulfilled (bytes32 tradeId, address customer, uint at);\n\n    function MarketEvents () public {\n        market = Market(msg.sender);\n    }\n\n    function tradeListed(\n        address offer,\n        address request, \n        uint256 offerValue,\n        uint256 requestValue,\n        address merchant\n    )\n        public onlyMarket\n    {\n        TradeListed(\n            offer,\n            request,\n            offerValue,\n            requestValue,\n            merchant\n        );\n    }\n\n    function tradeCancelled(bytes32 tradeId) public onlyMarket {\n        TradeCancelled(tradeId);\n    }\n\n    function tradeFulfilled(bytes32 tradeId, address customer, uint at) public onlyMarket {\n        TradeFulfilled(tradeId, customer, at);\n    }\n    \n    function inventoryCreated(address merchant, address inventory) public onlyMarket {\n        InventoryCreated(merchant, inventory);\n    }\n    \n    function fundsWithdrawaled(address merchant, address asset, uint256 value) public onlyMarket {\n        FundsWithdrawaled(merchant, asset, value);\n    }\n}",
+  "sourcePath": "/Users/matt/Documents/LootSafe/LootSafe.Market.module/contracts/MarketEvents.sol",
+  "ast": {
+    "attributes": {
+      "absolutePath": "/Users/matt/Documents/LootSafe/LootSafe.Market.module/contracts/MarketEvents.sol",
+      "exportedSymbols": {
+        "MarketEvents": [
+          1008
+        ]
+      }
+    },
+    "children": [
+      {
+        "attributes": {
+          "literals": [
+            "solidity",
+            "^",
+            "0.4",
+            ".12"
+          ]
+        },
+        "id": 855,
+        "name": "PragmaDirective",
+        "src": "0:24:5"
+      },
+      {
+        "attributes": {
+          "SourceUnit": 854,
+          "absolutePath": "/Users/matt/Documents/LootSafe/LootSafe.Market.module/contracts/Market.sol",
+          "file": "./Market.sol",
+          "scope": 1009,
+          "symbolAliases": [
+            null
+          ],
+          "unitAlias": ""
+        },
+        "id": 856,
+        "name": "ImportDirective",
+        "src": "26:22:5"
+      },
+      {
+        "attributes": {
+          "baseContracts": [
+            null
+          ],
+          "contractDependencies": [
+            null
+          ],
+          "contractKind": "contract",
+          "documentation": null,
+          "fullyImplemented": true,
+          "linearizedBaseContracts": [
+            1008
+          ],
+          "name": "MarketEvents",
+          "scope": 1009
+        },
+        "children": [
+          {
+            "attributes": {
+              "constant": false,
+              "name": "market",
+              "scope": 1008,
+              "stateVariable": true,
+              "storageLocation": "default",
+              "type": "contract Market",
+              "value": null,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "contractScope": null,
+                  "name": "Market",
+                  "referencedDeclaration": 853,
+                  "type": "contract Market"
+                },
+                "id": 857,
+                "name": "UserDefinedTypeName",
+                "src": "78:6:5"
+              }
+            ],
+            "id": 858,
+            "name": "VariableDeclaration",
+            "src": "78:20:5"
+          },
+          {
+            "attributes": {
+              "name": "onlyMarket",
+              "visibility": "internal"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 859,
+                "name": "ParameterList",
+                "src": "125:0:5"
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "isStructConstructorCall": false,
+                          "lValueRequested": false,
+                          "names": [
+                            null
+                          ],
+                          "type": "tuple()",
+                          "type_conversion": false
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": [
+                                {
+                                  "typeIdentifier": "t_bool",
+                                  "typeString": "bool"
+                                }
+                              ],
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 1376,
+                              "type": "function (bool) pure",
+                              "value": "require"
+                            },
+                            "id": 860,
+                            "name": "Identifier",
+                            "src": "135:7:5"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "commonType": {
+                                "typeIdentifier": "t_address",
+                                "typeString": "address"
+                              },
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "operator": "==",
+                              "type": "bool"
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": false,
+                                  "lValueRequested": false,
+                                  "member_name": "sender",
+                                  "referencedDeclaration": null,
+                                  "type": "address"
+                                },
+                                "children": [
+                                  {
+                                    "attributes": {
+                                      "argumentTypes": null,
+                                      "overloadedDeclarations": [
+                                        null
+                                      ],
+                                      "referencedDeclaration": 1373,
+                                      "type": "msg",
+                                      "value": "msg"
+                                    },
+                                    "id": 861,
+                                    "name": "Identifier",
+                                    "src": "143:3:5"
+                                  }
+                                ],
+                                "id": 862,
+                                "name": "MemberAccess",
+                                "src": "143:10:5"
+                              },
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": false,
+                                  "isStructConstructorCall": false,
+                                  "lValueRequested": false,
+                                  "names": [
+                                    null
+                                  ],
+                                  "type": "address",
+                                  "type_conversion": true
+                                },
+                                "children": [
+                                  {
+                                    "attributes": {
+                                      "argumentTypes": [
+                                        {
+                                          "typeIdentifier": "t_contract$_Market_$853",
+                                          "typeString": "contract Market"
+                                        }
+                                      ],
+                                      "isConstant": false,
+                                      "isLValue": false,
+                                      "isPure": true,
+                                      "lValueRequested": false,
+                                      "type": "type(address)",
+                                      "value": "address"
+                                    },
+                                    "id": 863,
+                                    "name": "ElementaryTypeNameExpression",
+                                    "src": "157:7:5"
+                                  },
+                                  {
+                                    "attributes": {
+                                      "argumentTypes": null,
+                                      "overloadedDeclarations": [
+                                        null
+                                      ],
+                                      "referencedDeclaration": 858,
+                                      "type": "contract Market",
+                                      "value": "market"
+                                    },
+                                    "id": 864,
+                                    "name": "Identifier",
+                                    "src": "165:6:5"
+                                  }
+                                ],
+                                "id": 865,
+                                "name": "FunctionCall",
+                                "src": "157:15:5"
+                              }
+                            ],
+                            "id": 866,
+                            "name": "BinaryOperation",
+                            "src": "143:29:5"
+                          }
+                        ],
+                        "id": 867,
+                        "name": "FunctionCall",
+                        "src": "135:38:5"
+                      }
+                    ],
+                    "id": 868,
+                    "name": "ExpressionStatement",
+                    "src": "135:38:5"
+                  },
+                  {
+                    "id": 869,
+                    "name": "PlaceholderStatement",
+                    "src": "183:1:5"
+                  }
+                ],
+                "id": 870,
+                "name": "Block",
+                "src": "125:66:5"
+              }
+            ],
+            "id": 871,
+            "name": "ModifierDefinition",
+            "src": "105:86:5"
+          },
+          {
+            "attributes": {
+              "anonymous": false,
+              "name": "InventoryCreated"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "indexed": false,
+                      "name": "merchant",
+                      "scope": 877,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "type": "address"
+                        },
+                        "id": 872,
+                        "name": "ElementaryTypeName",
+                        "src": "221:7:5"
+                      }
+                    ],
+                    "id": 873,
+                    "name": "VariableDeclaration",
+                    "src": "221:16:5"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "indexed": false,
+                      "name": "inventory",
+                      "scope": 877,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "type": "address"
+                        },
+                        "id": 874,
+                        "name": "ElementaryTypeName",
+                        "src": "239:7:5"
+                      }
+                    ],
+                    "id": 875,
+                    "name": "VariableDeclaration",
+                    "src": "239:17:5"
+                  }
+                ],
+                "id": 876,
+                "name": "ParameterList",
+                "src": "220:37:5"
+              }
+            ],
+            "id": 877,
+            "name": "EventDefinition",
+            "src": "197:61:5"
+          },
+          {
+            "attributes": {
+              "anonymous": false,
+              "name": "FundsWithdrawaled"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "indexed": false,
+                      "name": "merchant",
+                      "scope": 885,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "type": "address"
+                        },
+                        "id": 878,
+                        "name": "ElementaryTypeName",
+                        "src": "289:7:5"
+                      }
+                    ],
+                    "id": 879,
+                    "name": "VariableDeclaration",
+                    "src": "289:16:5"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "indexed": false,
+                      "name": "asset",
+                      "scope": 885,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "type": "address"
+                        },
+                        "id": 880,
+                        "name": "ElementaryTypeName",
+                        "src": "307:7:5"
+                      }
+                    ],
+                    "id": 881,
+                    "name": "VariableDeclaration",
+                    "src": "307:13:5"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "indexed": false,
+                      "name": "value",
+                      "scope": 885,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint256",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint256",
+                          "type": "uint256"
+                        },
+                        "id": 882,
+                        "name": "ElementaryTypeName",
+                        "src": "322:7:5"
+                      }
+                    ],
+                    "id": 883,
+                    "name": "VariableDeclaration",
+                    "src": "322:13:5"
+                  }
+                ],
+                "id": 884,
+                "name": "ParameterList",
+                "src": "288:48:5"
+              }
+            ],
+            "id": 885,
+            "name": "EventDefinition",
+            "src": "264:73:5"
+          },
+          {
+            "attributes": {
+              "anonymous": false,
+              "name": "TradeListed"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "indexed": false,
+                      "name": "offer",
+                      "scope": 897,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "type": "address"
+                        },
+                        "id": 886,
+                        "name": "ElementaryTypeName",
+                        "src": "371:7:5"
+                      }
+                    ],
+                    "id": 887,
+                    "name": "VariableDeclaration",
+                    "src": "371:13:5"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "indexed": false,
+                      "name": "request",
+                      "scope": 897,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "type": "address"
+                        },
+                        "id": 888,
+                        "name": "ElementaryTypeName",
+                        "src": "394:7:5"
+                      }
+                    ],
+                    "id": 889,
+                    "name": "VariableDeclaration",
+                    "src": "394:15:5"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "indexed": false,
+                      "name": "offerValue",
+                      "scope": 897,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint256",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint256",
+                          "type": "uint256"
+                        },
+                        "id": 890,
+                        "name": "ElementaryTypeName",
+                        "src": "420:7:5"
+                      }
+                    ],
+                    "id": 891,
+                    "name": "VariableDeclaration",
+                    "src": "420:18:5"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "indexed": false,
+                      "name": "requestValue",
+                      "scope": 897,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint256",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint256",
+                          "type": "uint256"
+                        },
+                        "id": 892,
+                        "name": "ElementaryTypeName",
+                        "src": "448:7:5"
+                      }
+                    ],
+                    "id": 893,
+                    "name": "VariableDeclaration",
+                    "src": "448:20:5"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "indexed": false,
+                      "name": "merchant",
+                      "scope": 897,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "type": "address"
+                        },
+                        "id": 894,
+                        "name": "ElementaryTypeName",
+                        "src": "478:7:5"
+                      }
+                    ],
+                    "id": 895,
+                    "name": "VariableDeclaration",
+                    "src": "478:16:5"
+                  }
+                ],
+                "id": 896,
+                "name": "ParameterList",
+                "src": "361:139:5"
+              }
+            ],
+            "id": 897,
+            "name": "EventDefinition",
+            "src": "343:158:5"
+          },
+          {
+            "attributes": {
+              "anonymous": false,
+              "name": "TradeCancelled"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "indexed": false,
+                      "name": "tradeId",
+                      "scope": 901,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "bytes32",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bytes32",
+                          "type": "bytes32"
+                        },
+                        "id": 898,
+                        "name": "ElementaryTypeName",
+                        "src": "529:7:5"
+                      }
+                    ],
+                    "id": 899,
+                    "name": "VariableDeclaration",
+                    "src": "529:15:5"
+                  }
+                ],
+                "id": 900,
+                "name": "ParameterList",
+                "src": "528:17:5"
+              }
+            ],
+            "id": 901,
+            "name": "EventDefinition",
+            "src": "507:39:5"
+          },
+          {
+            "attributes": {
+              "anonymous": false,
+              "name": "TradeFulfilled"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "indexed": false,
+                      "name": "tradeId",
+                      "scope": 909,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "bytes32",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bytes32",
+                          "type": "bytes32"
+                        },
+                        "id": 902,
+                        "name": "ElementaryTypeName",
+                        "src": "573:7:5"
+                      }
+                    ],
+                    "id": 903,
+                    "name": "VariableDeclaration",
+                    "src": "573:15:5"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "indexed": false,
+                      "name": "customer",
+                      "scope": 909,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "type": "address"
+                        },
+                        "id": 904,
+                        "name": "ElementaryTypeName",
+                        "src": "590:7:5"
+                      }
+                    ],
+                    "id": 905,
+                    "name": "VariableDeclaration",
+                    "src": "590:16:5"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "indexed": false,
+                      "name": "at",
+                      "scope": 909,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint256",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint",
+                          "type": "uint256"
+                        },
+                        "id": 906,
+                        "name": "ElementaryTypeName",
+                        "src": "608:4:5"
+                      }
+                    ],
+                    "id": 907,
+                    "name": "VariableDeclaration",
+                    "src": "608:7:5"
+                  }
+                ],
+                "id": 908,
+                "name": "ParameterList",
+                "src": "572:44:5"
+              }
+            ],
+            "id": 909,
+            "name": "EventDefinition",
+            "src": "551:66:5"
+          },
+          {
+            "attributes": {
+              "constant": false,
+              "implemented": true,
+              "isConstructor": true,
+              "modifiers": [
+                null
+              ],
+              "name": "MarketEvents",
+              "payable": false,
+              "scope": 1008,
+              "stateMutability": "nonpayable",
+              "superFunction": null,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 910,
+                "name": "ParameterList",
+                "src": "645:2:5"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 911,
+                "name": "ParameterList",
+                "src": "655:0:5"
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "operator": "=",
+                          "type": "contract Market"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 858,
+                              "type": "contract Market",
+                              "value": "market"
+                            },
+                            "id": 912,
+                            "name": "Identifier",
+                            "src": "665:6:5"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "isStructConstructorCall": false,
+                              "lValueRequested": false,
+                              "names": [
+                                null
+                              ],
+                              "type": "contract Market",
+                              "type_conversion": true
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": [
+                                    {
+                                      "typeIdentifier": "t_address",
+                                      "typeString": "address"
+                                    }
+                                  ],
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 853,
+                                  "type": "type(contract Market)",
+                                  "value": "Market"
+                                },
+                                "id": 913,
+                                "name": "Identifier",
+                                "src": "674:6:5"
+                              },
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": false,
+                                  "lValueRequested": false,
+                                  "member_name": "sender",
+                                  "referencedDeclaration": null,
+                                  "type": "address"
+                                },
+                                "children": [
+                                  {
+                                    "attributes": {
+                                      "argumentTypes": null,
+                                      "overloadedDeclarations": [
+                                        null
+                                      ],
+                                      "referencedDeclaration": 1373,
+                                      "type": "msg",
+                                      "value": "msg"
+                                    },
+                                    "id": 914,
+                                    "name": "Identifier",
+                                    "src": "681:3:5"
+                                  }
+                                ],
+                                "id": 915,
+                                "name": "MemberAccess",
+                                "src": "681:10:5"
+                              }
+                            ],
+                            "id": 916,
+                            "name": "FunctionCall",
+                            "src": "674:18:5"
+                          }
+                        ],
+                        "id": 917,
+                        "name": "Assignment",
+                        "src": "665:27:5"
+                      }
+                    ],
+                    "id": 918,
+                    "name": "ExpressionStatement",
+                    "src": "665:27:5"
+                  }
+                ],
+                "id": 919,
+                "name": "Block",
+                "src": "655:44:5"
+              }
+            ],
+            "id": 920,
+            "name": "FunctionDefinition",
+            "src": "623:76:5"
+          },
+          {
+            "attributes": {
+              "constant": false,
+              "implemented": true,
+              "isConstructor": false,
+              "name": "tradeListed",
+              "payable": false,
+              "scope": 1008,
+              "stateMutability": "nonpayable",
+              "superFunction": null,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "offer",
+                      "scope": 944,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "type": "address"
+                        },
+                        "id": 921,
+                        "name": "ElementaryTypeName",
+                        "src": "735:7:5"
+                      }
+                    ],
+                    "id": 922,
+                    "name": "VariableDeclaration",
+                    "src": "735:13:5"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "request",
+                      "scope": 944,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "type": "address"
+                        },
+                        "id": 923,
+                        "name": "ElementaryTypeName",
+                        "src": "758:7:5"
+                      }
+                    ],
+                    "id": 924,
+                    "name": "VariableDeclaration",
+                    "src": "758:15:5"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "offerValue",
+                      "scope": 944,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint256",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint256",
+                          "type": "uint256"
+                        },
+                        "id": 925,
+                        "name": "ElementaryTypeName",
+                        "src": "784:7:5"
+                      }
+                    ],
+                    "id": 926,
+                    "name": "VariableDeclaration",
+                    "src": "784:18:5"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "requestValue",
+                      "scope": 944,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint256",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint256",
+                          "type": "uint256"
+                        },
+                        "id": 927,
+                        "name": "ElementaryTypeName",
+                        "src": "812:7:5"
+                      }
+                    ],
+                    "id": 928,
+                    "name": "VariableDeclaration",
+                    "src": "812:20:5"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "merchant",
+                      "scope": 944,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "type": "address"
+                        },
+                        "id": 929,
+                        "name": "ElementaryTypeName",
+                        "src": "842:7:5"
+                      }
+                    ],
+                    "id": 930,
+                    "name": "VariableDeclaration",
+                    "src": "842:16:5"
+                  }
+                ],
+                "id": 931,
+                "name": "ParameterList",
+                "src": "725:139:5"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 934,
+                "name": "ParameterList",
+                "src": "895:0:5"
+              },
+              {
+                "attributes": {
+                  "arguments": [
+                    null
+                  ]
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "argumentTypes": null,
+                      "overloadedDeclarations": [
+                        null
+                      ],
+                      "referencedDeclaration": 871,
+                      "type": "modifier ()",
+                      "value": "onlyMarket"
+                    },
+                    "id": 932,
+                    "name": "Identifier",
+                    "src": "880:10:5"
+                  }
+                ],
+                "id": 933,
+                "name": "ModifierInvocation",
+                "src": "880:10:5"
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "isStructConstructorCall": false,
+                          "lValueRequested": false,
+                          "names": [
+                            null
+                          ],
+                          "type": "tuple()",
+                          "type_conversion": false
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": [
+                                {
+                                  "typeIdentifier": "t_address",
+                                  "typeString": "address"
+                                },
+                                {
+                                  "typeIdentifier": "t_address",
+                                  "typeString": "address"
+                                },
+                                {
+                                  "typeIdentifier": "t_uint256",
+                                  "typeString": "uint256"
+                                },
+                                {
+                                  "typeIdentifier": "t_uint256",
+                                  "typeString": "uint256"
+                                },
+                                {
+                                  "typeIdentifier": "t_address",
+                                  "typeString": "address"
+                                }
+                              ],
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 897,
+                              "type": "function (address,address,uint256,uint256,address)",
+                              "value": "TradeListed"
+                            },
+                            "id": 935,
+                            "name": "Identifier",
+                            "src": "905:11:5"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 922,
+                              "type": "address",
+                              "value": "offer"
+                            },
+                            "id": 936,
+                            "name": "Identifier",
+                            "src": "930:5:5"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 924,
+                              "type": "address",
+                              "value": "request"
+                            },
+                            "id": 937,
+                            "name": "Identifier",
+                            "src": "949:7:5"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 926,
+                              "type": "uint256",
+                              "value": "offerValue"
+                            },
+                            "id": 938,
+                            "name": "Identifier",
+                            "src": "970:10:5"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 928,
+                              "type": "uint256",
+                              "value": "requestValue"
+                            },
+                            "id": 939,
+                            "name": "Identifier",
+                            "src": "994:12:5"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 930,
+                              "type": "address",
+                              "value": "merchant"
+                            },
+                            "id": 940,
+                            "name": "Identifier",
+                            "src": "1020:8:5"
+                          }
+                        ],
+                        "id": 941,
+                        "name": "FunctionCall",
+                        "src": "905:133:5"
+                      }
+                    ],
+                    "id": 942,
+                    "name": "ExpressionStatement",
+                    "src": "905:133:5"
+                  }
+                ],
+                "id": 943,
+                "name": "Block",
+                "src": "895:150:5"
+              }
+            ],
+            "id": 944,
+            "name": "FunctionDefinition",
+            "src": "705:340:5"
+          },
+          {
+            "attributes": {
+              "constant": false,
+              "implemented": true,
+              "isConstructor": false,
+              "name": "tradeCancelled",
+              "payable": false,
+              "scope": 1008,
+              "stateMutability": "nonpayable",
+              "superFunction": null,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "tradeId",
+                      "scope": 956,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "bytes32",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bytes32",
+                          "type": "bytes32"
+                        },
+                        "id": 945,
+                        "name": "ElementaryTypeName",
+                        "src": "1075:7:5"
+                      }
+                    ],
+                    "id": 946,
+                    "name": "VariableDeclaration",
+                    "src": "1075:15:5"
+                  }
+                ],
+                "id": 947,
+                "name": "ParameterList",
+                "src": "1074:17:5"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 950,
+                "name": "ParameterList",
+                "src": "1110:0:5"
+              },
+              {
+                "attributes": {
+                  "arguments": [
+                    null
+                  ]
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "argumentTypes": null,
+                      "overloadedDeclarations": [
+                        null
+                      ],
+                      "referencedDeclaration": 871,
+                      "type": "modifier ()",
+                      "value": "onlyMarket"
+                    },
+                    "id": 948,
+                    "name": "Identifier",
+                    "src": "1099:10:5"
+                  }
+                ],
+                "id": 949,
+                "name": "ModifierInvocation",
+                "src": "1099:10:5"
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "isStructConstructorCall": false,
+                          "lValueRequested": false,
+                          "names": [
+                            null
+                          ],
+                          "type": "tuple()",
+                          "type_conversion": false
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": [
+                                {
+                                  "typeIdentifier": "t_bytes32",
+                                  "typeString": "bytes32"
+                                }
+                              ],
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 901,
+                              "type": "function (bytes32)",
+                              "value": "TradeCancelled"
+                            },
+                            "id": 951,
+                            "name": "Identifier",
+                            "src": "1120:14:5"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 946,
+                              "type": "bytes32",
+                              "value": "tradeId"
+                            },
+                            "id": 952,
+                            "name": "Identifier",
+                            "src": "1135:7:5"
+                          }
+                        ],
+                        "id": 953,
+                        "name": "FunctionCall",
+                        "src": "1120:23:5"
+                      }
+                    ],
+                    "id": 954,
+                    "name": "ExpressionStatement",
+                    "src": "1120:23:5"
+                  }
+                ],
+                "id": 955,
+                "name": "Block",
+                "src": "1110:40:5"
+              }
+            ],
+            "id": 956,
+            "name": "FunctionDefinition",
+            "src": "1051:99:5"
+          },
+          {
+            "attributes": {
+              "constant": false,
+              "implemented": true,
+              "isConstructor": false,
+              "name": "tradeFulfilled",
+              "payable": false,
+              "scope": 1008,
+              "stateMutability": "nonpayable",
+              "superFunction": null,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "tradeId",
+                      "scope": 974,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "bytes32",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bytes32",
+                          "type": "bytes32"
+                        },
+                        "id": 957,
+                        "name": "ElementaryTypeName",
+                        "src": "1180:7:5"
+                      }
+                    ],
+                    "id": 958,
+                    "name": "VariableDeclaration",
+                    "src": "1180:15:5"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "customer",
+                      "scope": 974,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "type": "address"
+                        },
+                        "id": 959,
+                        "name": "ElementaryTypeName",
+                        "src": "1197:7:5"
+                      }
+                    ],
+                    "id": 960,
+                    "name": "VariableDeclaration",
+                    "src": "1197:16:5"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "at",
+                      "scope": 974,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint256",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint",
+                          "type": "uint256"
+                        },
+                        "id": 961,
+                        "name": "ElementaryTypeName",
+                        "src": "1215:4:5"
+                      }
+                    ],
+                    "id": 962,
+                    "name": "VariableDeclaration",
+                    "src": "1215:7:5"
+                  }
+                ],
+                "id": 963,
+                "name": "ParameterList",
+                "src": "1179:44:5"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 966,
+                "name": "ParameterList",
+                "src": "1242:0:5"
+              },
+              {
+                "attributes": {
+                  "arguments": [
+                    null
+                  ]
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "argumentTypes": null,
+                      "overloadedDeclarations": [
+                        null
+                      ],
+                      "referencedDeclaration": 871,
+                      "type": "modifier ()",
+                      "value": "onlyMarket"
+                    },
+                    "id": 964,
+                    "name": "Identifier",
+                    "src": "1231:10:5"
+                  }
+                ],
+                "id": 965,
+                "name": "ModifierInvocation",
+                "src": "1231:10:5"
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "isStructConstructorCall": false,
+                          "lValueRequested": false,
+                          "names": [
+                            null
+                          ],
+                          "type": "tuple()",
+                          "type_conversion": false
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": [
+                                {
+                                  "typeIdentifier": "t_bytes32",
+                                  "typeString": "bytes32"
+                                },
+                                {
+                                  "typeIdentifier": "t_address",
+                                  "typeString": "address"
+                                },
+                                {
+                                  "typeIdentifier": "t_uint256",
+                                  "typeString": "uint256"
+                                }
+                              ],
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 909,
+                              "type": "function (bytes32,address,uint256)",
+                              "value": "TradeFulfilled"
+                            },
+                            "id": 967,
+                            "name": "Identifier",
+                            "src": "1252:14:5"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 958,
+                              "type": "bytes32",
+                              "value": "tradeId"
+                            },
+                            "id": 968,
+                            "name": "Identifier",
+                            "src": "1267:7:5"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 960,
+                              "type": "address",
+                              "value": "customer"
+                            },
+                            "id": 969,
+                            "name": "Identifier",
+                            "src": "1276:8:5"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 962,
+                              "type": "uint256",
+                              "value": "at"
+                            },
+                            "id": 970,
+                            "name": "Identifier",
+                            "src": "1286:2:5"
+                          }
+                        ],
+                        "id": 971,
+                        "name": "FunctionCall",
+                        "src": "1252:37:5"
+                      }
+                    ],
+                    "id": 972,
+                    "name": "ExpressionStatement",
+                    "src": "1252:37:5"
+                  }
+                ],
+                "id": 973,
+                "name": "Block",
+                "src": "1242:54:5"
+              }
+            ],
+            "id": 974,
+            "name": "FunctionDefinition",
+            "src": "1156:140:5"
+          },
+          {
+            "attributes": {
+              "constant": false,
+              "implemented": true,
+              "isConstructor": false,
+              "name": "inventoryCreated",
+              "payable": false,
+              "scope": 1008,
+              "stateMutability": "nonpayable",
+              "superFunction": null,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "merchant",
+                      "scope": 989,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "type": "address"
+                        },
+                        "id": 975,
+                        "name": "ElementaryTypeName",
+                        "src": "1332:7:5"
+                      }
+                    ],
+                    "id": 976,
+                    "name": "VariableDeclaration",
+                    "src": "1332:16:5"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "inventory",
+                      "scope": 989,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "type": "address"
+                        },
+                        "id": 977,
+                        "name": "ElementaryTypeName",
+                        "src": "1350:7:5"
+                      }
+                    ],
+                    "id": 978,
+                    "name": "VariableDeclaration",
+                    "src": "1350:17:5"
+                  }
+                ],
+                "id": 979,
+                "name": "ParameterList",
+                "src": "1331:37:5"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 982,
+                "name": "ParameterList",
+                "src": "1387:0:5"
+              },
+              {
+                "attributes": {
+                  "arguments": [
+                    null
+                  ]
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "argumentTypes": null,
+                      "overloadedDeclarations": [
+                        null
+                      ],
+                      "referencedDeclaration": 871,
+                      "type": "modifier ()",
+                      "value": "onlyMarket"
+                    },
+                    "id": 980,
+                    "name": "Identifier",
+                    "src": "1376:10:5"
+                  }
+                ],
+                "id": 981,
+                "name": "ModifierInvocation",
+                "src": "1376:10:5"
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "isStructConstructorCall": false,
+                          "lValueRequested": false,
+                          "names": [
+                            null
+                          ],
+                          "type": "tuple()",
+                          "type_conversion": false
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": [
+                                {
+                                  "typeIdentifier": "t_address",
+                                  "typeString": "address"
+                                },
+                                {
+                                  "typeIdentifier": "t_address",
+                                  "typeString": "address"
+                                }
+                              ],
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 877,
+                              "type": "function (address,address)",
+                              "value": "InventoryCreated"
+                            },
+                            "id": 983,
+                            "name": "Identifier",
+                            "src": "1397:16:5"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 976,
+                              "type": "address",
+                              "value": "merchant"
+                            },
+                            "id": 984,
+                            "name": "Identifier",
+                            "src": "1414:8:5"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 978,
+                              "type": "address",
+                              "value": "inventory"
+                            },
+                            "id": 985,
+                            "name": "Identifier",
+                            "src": "1424:9:5"
+                          }
+                        ],
+                        "id": 986,
+                        "name": "FunctionCall",
+                        "src": "1397:37:5"
+                      }
+                    ],
+                    "id": 987,
+                    "name": "ExpressionStatement",
+                    "src": "1397:37:5"
+                  }
+                ],
+                "id": 988,
+                "name": "Block",
+                "src": "1387:54:5"
+              }
+            ],
+            "id": 989,
+            "name": "FunctionDefinition",
+            "src": "1306:135:5"
+          },
+          {
+            "attributes": {
+              "constant": false,
+              "implemented": true,
+              "isConstructor": false,
+              "name": "fundsWithdrawaled",
+              "payable": false,
+              "scope": 1008,
+              "stateMutability": "nonpayable",
+              "superFunction": null,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "merchant",
+                      "scope": 1007,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "type": "address"
+                        },
+                        "id": 990,
+                        "name": "ElementaryTypeName",
+                        "src": "1478:7:5"
+                      }
+                    ],
+                    "id": 991,
+                    "name": "VariableDeclaration",
+                    "src": "1478:16:5"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "asset",
+                      "scope": 1007,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "type": "address"
+                        },
+                        "id": 992,
+                        "name": "ElementaryTypeName",
+                        "src": "1496:7:5"
+                      }
+                    ],
+                    "id": 993,
+                    "name": "VariableDeclaration",
+                    "src": "1496:13:5"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "value",
+                      "scope": 1007,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint256",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint256",
+                          "type": "uint256"
+                        },
+                        "id": 994,
+                        "name": "ElementaryTypeName",
+                        "src": "1511:7:5"
+                      }
+                    ],
+                    "id": 995,
+                    "name": "VariableDeclaration",
+                    "src": "1511:13:5"
+                  }
+                ],
+                "id": 996,
+                "name": "ParameterList",
+                "src": "1477:48:5"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 999,
+                "name": "ParameterList",
+                "src": "1544:0:5"
+              },
+              {
+                "attributes": {
+                  "arguments": [
+                    null
+                  ]
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "argumentTypes": null,
+                      "overloadedDeclarations": [
+                        null
+                      ],
+                      "referencedDeclaration": 871,
+                      "type": "modifier ()",
+                      "value": "onlyMarket"
+                    },
+                    "id": 997,
+                    "name": "Identifier",
+                    "src": "1533:10:5"
+                  }
+                ],
+                "id": 998,
+                "name": "ModifierInvocation",
+                "src": "1533:10:5"
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "isStructConstructorCall": false,
+                          "lValueRequested": false,
+                          "names": [
+                            null
+                          ],
+                          "type": "tuple()",
+                          "type_conversion": false
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": [
+                                {
+                                  "typeIdentifier": "t_address",
+                                  "typeString": "address"
+                                },
+                                {
+                                  "typeIdentifier": "t_address",
+                                  "typeString": "address"
+                                },
+                                {
+                                  "typeIdentifier": "t_uint256",
+                                  "typeString": "uint256"
+                                }
+                              ],
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 885,
+                              "type": "function (address,address,uint256)",
+                              "value": "FundsWithdrawaled"
+                            },
+                            "id": 1000,
+                            "name": "Identifier",
+                            "src": "1554:17:5"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 991,
+                              "type": "address",
+                              "value": "merchant"
+                            },
+                            "id": 1001,
+                            "name": "Identifier",
+                            "src": "1572:8:5"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 993,
+                              "type": "address",
+                              "value": "asset"
+                            },
+                            "id": 1002,
+                            "name": "Identifier",
+                            "src": "1582:5:5"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 995,
+                              "type": "uint256",
+                              "value": "value"
+                            },
+                            "id": 1003,
+                            "name": "Identifier",
+                            "src": "1589:5:5"
+                          }
+                        ],
+                        "id": 1004,
+                        "name": "FunctionCall",
+                        "src": "1554:41:5"
+                      }
+                    ],
+                    "id": 1005,
+                    "name": "ExpressionStatement",
+                    "src": "1554:41:5"
+                  }
+                ],
+                "id": 1006,
+                "name": "Block",
+                "src": "1544:58:5"
+              }
+            ],
+            "id": 1007,
+            "name": "FunctionDefinition",
+            "src": "1451:151:5"
+          }
+        ],
+        "id": 1008,
+        "name": "ContractDefinition",
+        "src": "50:1554:5"
+      }
+    ],
+    "id": 1009,
+    "name": "SourceUnit",
+    "src": "0:1604:5"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.4.18+commit.9cf6e910.Emscripten.clang"
+  },
+  "networks": {
+    "1518066148322": {
+      "events": {},
+      "links": {},
+      "address": "0x576870972231bced48fe4b813a442dd946f8ef6c"
+    }
+  },
+  "schemaVersion": "1.0.1",
+  "updatedAt": "2018-02-08T06:07:54.102Z"
+}

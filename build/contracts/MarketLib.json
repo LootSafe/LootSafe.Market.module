@@ -1,0 +1,295 @@
+{
+  "contractName": "MarketLib",
+  "abi": [],
+  "bytecode": "0x60606040523415600e57600080fd5b603580601b6000396000f3006060604052600080fd00a165627a7a72305820c976615b8e5a797ee8d53cf07c041920ef0738d8868b085a4f70a0131e0e3dc00029",
+  "deployedBytecode": "0x6060604052600080fd00a165627a7a72305820c976615b8e5a797ee8d53cf07c041920ef0738d8868b085a4f70a0131e0e3dc00029",
+  "sourceMap": "26:283:1:-;;;;;;;;;;;;;;;;;",
+  "deployedSourceMap": "26:283:1:-;;;;;",
+  "source": "pragma solidity ^0.4.12;\n\nlibrary MarketLib {\n    // Represents a trade offer\n    struct Offer {\n        address offer;\n        address request;\n        uint256 offerValue;\n        uint256 requestValue;\n        address merchant;\n        address customer;\n        uint settleTime;\n        bool settled;\n    }\n}",
+  "sourcePath": "/Users/matt/Documents/LootSafe/LootSafe.Market.module/contracts/Libraries/MarketLib.sol",
+  "ast": {
+    "attributes": {
+      "absolutePath": "/Users/matt/Documents/LootSafe/LootSafe.Market.module/contracts/Libraries/MarketLib.sol",
+      "exportedSymbols": {
+        "MarketLib": [
+          150
+        ]
+      }
+    },
+    "children": [
+      {
+        "attributes": {
+          "literals": [
+            "solidity",
+            "^",
+            "0.4",
+            ".12"
+          ]
+        },
+        "id": 132,
+        "name": "PragmaDirective",
+        "src": "0:24:1"
+      },
+      {
+        "attributes": {
+          "baseContracts": [
+            null
+          ],
+          "contractDependencies": [
+            null
+          ],
+          "contractKind": "library",
+          "documentation": null,
+          "fullyImplemented": true,
+          "linearizedBaseContracts": [
+            150
+          ],
+          "name": "MarketLib",
+          "scope": 151
+        },
+        "children": [
+          {
+            "attributes": {
+              "canonicalName": "MarketLib.Offer",
+              "name": "Offer",
+              "scope": 150,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "constant": false,
+                  "name": "offer",
+                  "scope": 149,
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "type": "address",
+                  "value": null,
+                  "visibility": "internal"
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "name": "address",
+                      "type": "address"
+                    },
+                    "id": 133,
+                    "name": "ElementaryTypeName",
+                    "src": "105:7:1"
+                  }
+                ],
+                "id": 134,
+                "name": "VariableDeclaration",
+                "src": "105:13:1"
+              },
+              {
+                "attributes": {
+                  "constant": false,
+                  "name": "request",
+                  "scope": 149,
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "type": "address",
+                  "value": null,
+                  "visibility": "internal"
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "name": "address",
+                      "type": "address"
+                    },
+                    "id": 135,
+                    "name": "ElementaryTypeName",
+                    "src": "128:7:1"
+                  }
+                ],
+                "id": 136,
+                "name": "VariableDeclaration",
+                "src": "128:15:1"
+              },
+              {
+                "attributes": {
+                  "constant": false,
+                  "name": "offerValue",
+                  "scope": 149,
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "type": "uint256",
+                  "value": null,
+                  "visibility": "internal"
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "name": "uint256",
+                      "type": "uint256"
+                    },
+                    "id": 137,
+                    "name": "ElementaryTypeName",
+                    "src": "153:7:1"
+                  }
+                ],
+                "id": 138,
+                "name": "VariableDeclaration",
+                "src": "153:18:1"
+              },
+              {
+                "attributes": {
+                  "constant": false,
+                  "name": "requestValue",
+                  "scope": 149,
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "type": "uint256",
+                  "value": null,
+                  "visibility": "internal"
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "name": "uint256",
+                      "type": "uint256"
+                    },
+                    "id": 139,
+                    "name": "ElementaryTypeName",
+                    "src": "181:7:1"
+                  }
+                ],
+                "id": 140,
+                "name": "VariableDeclaration",
+                "src": "181:20:1"
+              },
+              {
+                "attributes": {
+                  "constant": false,
+                  "name": "merchant",
+                  "scope": 149,
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "type": "address",
+                  "value": null,
+                  "visibility": "internal"
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "name": "address",
+                      "type": "address"
+                    },
+                    "id": 141,
+                    "name": "ElementaryTypeName",
+                    "src": "211:7:1"
+                  }
+                ],
+                "id": 142,
+                "name": "VariableDeclaration",
+                "src": "211:16:1"
+              },
+              {
+                "attributes": {
+                  "constant": false,
+                  "name": "customer",
+                  "scope": 149,
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "type": "address",
+                  "value": null,
+                  "visibility": "internal"
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "name": "address",
+                      "type": "address"
+                    },
+                    "id": 143,
+                    "name": "ElementaryTypeName",
+                    "src": "237:7:1"
+                  }
+                ],
+                "id": 144,
+                "name": "VariableDeclaration",
+                "src": "237:16:1"
+              },
+              {
+                "attributes": {
+                  "constant": false,
+                  "name": "settleTime",
+                  "scope": 149,
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "type": "uint256",
+                  "value": null,
+                  "visibility": "internal"
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "name": "uint",
+                      "type": "uint256"
+                    },
+                    "id": 145,
+                    "name": "ElementaryTypeName",
+                    "src": "263:4:1"
+                  }
+                ],
+                "id": 146,
+                "name": "VariableDeclaration",
+                "src": "263:15:1"
+              },
+              {
+                "attributes": {
+                  "constant": false,
+                  "name": "settled",
+                  "scope": 149,
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "type": "bool",
+                  "value": null,
+                  "visibility": "internal"
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "name": "bool",
+                      "type": "bool"
+                    },
+                    "id": 147,
+                    "name": "ElementaryTypeName",
+                    "src": "288:4:1"
+                  }
+                ],
+                "id": 148,
+                "name": "VariableDeclaration",
+                "src": "288:12:1"
+              }
+            ],
+            "id": 149,
+            "name": "StructDefinition",
+            "src": "82:225:1"
+          }
+        ],
+        "id": 150,
+        "name": "ContractDefinition",
+        "src": "26:283:1"
+      }
+    ],
+    "id": 151,
+    "name": "SourceUnit",
+    "src": "0:309:1"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.4.18+commit.9cf6e910.Emscripten.clang"
+  },
+  "networks": {
+    "1518066148322": {
+      "events": {},
+      "links": {},
+      "address": "0x85ec9a190801568d7c4ee87e97ab8ceefd540a1e"
+    }
+  },
+  "schemaVersion": "1.0.1",
+  "updatedAt": "2018-02-08T06:07:54.102Z"
+}
