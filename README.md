@@ -6,7 +6,7 @@ The market module allows customers and merchants to exchange assets in a trustle
 
 ## Methods
 
-getTradesByMerchant
+### getTradesByMerchant
 
 Returns the trades (both settled and active) for a given merchant.
 
@@ -14,7 +14,7 @@ Returns the trades (both settled and active) for a given merchant.
 function getTradesByMerchant (address merchant) external constant returns (bytes32[] _trades)
 ```
 
-getTrades
+### getTrades
 
 Returns all trades in the system
 
@@ -22,7 +22,7 @@ Returns all trades in the system
 function getTrades () external constant returns (bytes32[] _trades)
 ```
 
-getTrade
+### getTrade
 
 Returns a specific trade from the system by id
 
@@ -39,7 +39,7 @@ function getTrade (bytes32 tradeId) external constant returns (
 )
 ```
 
-getMyInventory
+### getMyInventory
 
 Returns the address of your inventory
 
