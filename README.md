@@ -1,7 +1,18 @@
-# LootSafe.Market.module
+# LootSafe Market
 
 The market module allows customers and merchants to exchange assets in a trustless mannor. Users deposit the items they wish to exchange into the market (via their own Inventory) then can either list offers or fulfill offers.
 
+# Docs
+
+## Methods
+
+getTradesByMerchant
+
+Returns the trades (both settled and active) for a given merchant.
+
+```solidity
+function getTradesByMerchant (address merchant) external constant returns (bytes32[] _trades)
+```
 
 ## Test Coverage
 ```
@@ -22,3 +33,5 @@ The market module allows customers and merchants to exchange assets in a trustle
 
   12 passing (5s)
   ```
+  
+  # WARNING THIS CONTRACT HAS NOT BEEN AUDITED YET, DO NOT USE IN PRODUCTION.
