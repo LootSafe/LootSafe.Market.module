@@ -14,6 +14,39 @@ Returns the trades (both settled and active) for a given merchant.
 function getTradesByMerchant (address merchant) external constant returns (bytes32[] _trades)
 ```
 
+getTrades
+
+Returns all trades in the system
+
+```solidity
+function getTrades () external constant returns (bytes32[] _trades)
+```
+
+getTrade
+
+Returns a specific trade from the system by id
+
+```solidity
+function getTrade (bytes32 tradeId) external constant returns (
+        address offer,
+        address request,
+        uint256 offerValue,
+        uint256 requestValue,
+        address merchant,
+        address customer,
+        uint settleTime,
+        bool settled
+)
+```
+
+getMyInventory
+
+Returns the address of your inventory
+
+```solidity
+function getMyInventory () external constant returns (address inventory)
+```
+
 ## Test Coverage
 ```
  Contract: Market
