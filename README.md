@@ -47,6 +47,46 @@ Returns the address of your inventory
 function getMyInventory () external constant returns (address inventory)
 ```
 
+### settleTrade
+
+Alllows a merchant to settle a trade before fulfillment
+
+```solidity
+function settleTrade (bytes32 tradeId) external
+```
+
+### withdrawal
+
+Alllows a user to withdrawal assets as long as they are not locked up in trades
+
+```solidity
+function withdrawal (address asset, uint256 value) public 
+```
+
+### makeOffer
+
+Alllows a merchant to add an offer to the marketplace, locking respective funds in their inventory until settlement
+
+```solidity
+function makeOffer(address _offer, address _request, uint256 _offerValue, uint256 _requestValue) external
+```
+
+### fillOffer
+
+Alllows a customer to fill an offer
+
+```solidity
+function fillOffer(bytes32 tradeId) external
+```
+
+### fallback
+
+Send 0 eth to marketplace to create your inventory
+
+```solidity
+function () public payable
+```
+
 ## Test Coverage
 ```
  Contract: Market
