@@ -22,6 +22,14 @@ Returns all trades in the system
 function getTrades () external constant returns (bytes32[] _trades)
 ```
 
+### getTradesByAsset
+
+Returns all trades in the system sorted by the asset
+
+```solidity
+function getTradesByAsset (address asset) external constant returns (bytes32[] _trades)
+```
+
 ### getTrade
 
 Returns a specific trade from the system by id
