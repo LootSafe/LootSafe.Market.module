@@ -48,18 +48,18 @@ contract MarketEvents {
     }
 
     function tradeCancelled(bytes32 tradeId) public onlyMarket {
-        TradeCancelled(tradeId);
+        emit TradeCancelled(tradeId);
     }
 
     function tradeFulfilled(bytes32 tradeId, address customer, uint at) public onlyMarket {
-        TradeFulfilled(tradeId, customer, at);
+        emit TradeFulfilled(tradeId, customer, at);
     }
     
     function inventoryCreated(address merchant, address inventory) public onlyMarket {
-        InventoryCreated(merchant, inventory);
+        emit InventoryCreated(merchant, inventory);
     }
     
     function fundsWithdrawaled(address merchant, address asset, uint256 value) public onlyMarket {
-        FundsWithdrawaled(merchant, asset, value);
+        emit FundsWithdrawaled(merchant, asset, value);
     }
 }

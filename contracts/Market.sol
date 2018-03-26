@@ -24,6 +24,12 @@ contract Market {
     // tradeid => Offer - lists all trades 
     mapping (bytes32 => MarketLib.Offer) public trades;
 
+    // asset => ids
+    mapping (address => bytes32[]) public tradeIdsByAsset;
+
+    // asset => tradeid => Offer
+    mapping (address => mapping(bytes32 => MarketLib.Offer)) public tradesByAsset;
+
     // Merchant => (TradeID => Offer) - List all trades grouped by merchant
     mapping (address => bytes32[]) public tradesByMerchant;
 
@@ -73,6 +79,10 @@ contract Market {
 
     function getTrades () external constant returns (bytes32[] _trades) {
         return tradeIds;
+    }
+
+    function getTradesByAsset (address asset) external constant returns (bytes32[] _trades) {
+        return tradeIdsByAsset[asset];
     }
 
     function getTrade (bytes32 tradeId) external constant returns (
@@ -147,6 +157,7 @@ contract Market {
     {
         // Psuedo random trade identifier
         bytes32 tradeId = keccak256(Random.number(1333337));
+        require(trades[tradeId].offer == 0x0);
 
         MarketLib.Offer memory offer = MarketLib.Offer({
             offer: _offer,
@@ -169,7 +180,9 @@ contract Market {
         // Update trade references
         tradeIds.push(tradeId);
         trades[tradeId] = offer;
+        tradesByAsset[_offer][tradeId] = offer;
         tradesByMerchant[msg.sender].push(tradeId);
+        tradeIdsByAsset[_offer].push(tradeId);
 
         // TradeListed event emitted
         marketEvents.tradeListed(
@@ -216,6 +229,7 @@ contract Market {
         offer.settled = true;
         offer.settleTime = now;
         trades[tradeId] = offer;
+        tradesByAsset[offer.offer][tradeId] = offer;
 
         // Emit TradeFullfilled event
         marketEvents.tradeFulfilled(tradeId, msg.sender, now);
